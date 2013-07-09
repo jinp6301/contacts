@@ -1,5 +1,4 @@
 class Contact < ActiveRecord::Base
-  has_many :favorites
   belongs_to :user
 
   attr_accessible :address, :email, :name, :phone_number, :user_id

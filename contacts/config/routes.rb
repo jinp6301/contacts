@@ -5,7 +5,7 @@ Contacts::Application.routes.draw do
   end
 
   resources :contacts, :except => [:new, :edit, :index]
-  resources :favorites, :except => [:new, :edit, :index, :show]
+  resources :favorites, :except => [:new, :edit, :index, :show, :update]
 
 
   # get 'users' => 'users#index'

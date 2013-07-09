@@ -31,5 +31,4 @@ class UsersController < ApplicationController
     user.destroy
     render :json => "Success. User deleted."
   end
-
 end

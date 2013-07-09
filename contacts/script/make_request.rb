@@ -17,7 +17,13 @@ url = Addressable::URI.new(
   scheme: 'http',
   host: 'localhost',
   port: 3000,
-  path: '/users/70'
+  path: '/favorites/3'
 ).to_s
 
-p RestClient.get(url)
+# params = {:contact => {:address => '222 Broadway',
+#     :email => 'maybeyesapp@appacademy.io',
+#     :name => 'maybeyesGeorge',
+#     :phone_number => '222-123-1234',
+#     :user_id => 1}}
+params = {:favorite => {:user_id => 2, :contact_id => 2}}
+p RestClient.delete(url)
