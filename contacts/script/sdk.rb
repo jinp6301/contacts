@@ -45,8 +45,8 @@ class ContactsSDK
   private
     def get_url(path, query_values = {})
       Addressable::URI.new(
-        scheme: 'http',
-        host: 'localhost',
+        scheme: "http",
+        host: "localhost",
         port: 3000,
         path: path,
         query_values: query_values

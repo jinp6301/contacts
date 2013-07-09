@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
   before_filter :authenticate_user
 
   def index
-    render :json => {'contacts' => current_user.contacts}
+    render :json => {"contacts" => current_user.contacts}
   end
 
   def create

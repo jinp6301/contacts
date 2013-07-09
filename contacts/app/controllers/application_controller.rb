@@ -10,9 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user
-    unless logged_in?
-      render :json => "Must be logged in.", :status => :forbidden
-    end
+   render :json => "Must be logged in.", :status => :forbidden unless logged_in?
   end
 
 end

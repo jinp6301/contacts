@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
 
   def index
     fav_contacts = current_user.favorite_contacts
-    render :json => { 'favorites' => fav_contacts}
+    render :json => { "favorites" => fav_contacts}
   end
 
   def create
