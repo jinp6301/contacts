@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :favorite_contacts, :through => :favorites, :source => :contact
 
-  attr_accessible :email, :name
+  attr_accessible :email, :name, :password
 
-  validates :name, :email, :presence => true
+  validates :name, :email, :password, :presence => true
   validates :email, :uniqueness => true
 end
