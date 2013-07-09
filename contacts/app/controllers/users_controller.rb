@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_filter :authenticate_user, :except => [:create]
 
   def create
@@ -25,8 +24,6 @@ class UsersController < ApplicationController
 
   def destroy
     current_user.destroy
-    render :json => "Success. User deleted."
+    render :json => ["Success. User deleted."]
   end
-
-
 end

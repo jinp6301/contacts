@@ -12,38 +12,34 @@ class ContactsSDK
 
   def login(email, password)
     params = { :email => email, :password => password }
-    url = get_url("/session")
-    @token = JSON.parse(RestClient.post(url, params))["token"]
+    @token = JSON.parse(RestClient.post(get_url("/session"), params))["token"]
   end
 
   def logout
-    url = get_url("/session", {token: token})
+    url = get_url("/session")
     @token = nil
-    JSON.parse(RestClient.delete(url, params))
+    JSON.parse(RestClient.delete(url))
   end
 
   def get(path)
-    url = get_url(path, {token: token})
-    JSON.parse(RestClient.get(url))
+    JSON.parse(RestClient.get(get_url(path)))
   end
 
   def post(path, params = {})
-    url = get_url(path, {token: token})
-    JSON.parse(RestClient.post(url, params))
+    JSON.parse(RestClient.post(get_url(path), params))
   end
 
   def put(path, params = {})
-    url = get_url(path, {token: token})
-    JSON.parse(RestClient.put(url, params))
+    JSON.parse(RestClient.put(get_url(path), params))
   end
 
-  def delete(path)
-    url = get_url(path, {token: token})
-    JSON.parse(RestClient.delete(url))
+  def delete(path, params = {})
+    JSON.parse(RestClient.delete(get_url(path, params)))
   end
 
   private
     def get_url(path, query_values = {})
+      query_values[:token] = token if token
       Addressable::URI.new(
         scheme: "http",
         host: "localhost",

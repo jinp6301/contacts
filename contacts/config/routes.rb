@@ -5,6 +5,6 @@ Contacts::Application.routes.draw do
   end
 
   resources :contacts, :except => [:new, :edit, :index]
-  resources :favorites, :except => [:new, :edit, :index, :show, :update]
+  resource :favorite, :only => [:create, :destroy]
   resource :session, :only => [:create, :destroy]
 end

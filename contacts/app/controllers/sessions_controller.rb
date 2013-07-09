@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   before_filter :authenticate_user, :except => [:create]
 
   def create
@@ -9,7 +8,7 @@ class SessionsController < ApplicationController
       user.save!
       render :json => {:token => user.token}
     else
-      render :json => "Wrong credentials", :status => :forbidden
+      render :json => ["Wrong credentials"], :status => :forbidden
     end
   end
 
@@ -27,5 +26,4 @@ class SessionsController < ApplicationController
       end
       token
     end
-
 end

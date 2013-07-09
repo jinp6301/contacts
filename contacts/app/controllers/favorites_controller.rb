@@ -1,5 +1,4 @@
 class FavoritesController < ApplicationController
-
   before_filter :authenticate_user
 
   def index
@@ -18,12 +17,13 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite = Favorite.find(params[:id])
-    if favorite.user == current_user
+    favorite = Favorite.find_by_user_id_and_contact_id(current_user.id,
+                params[:contact_id])
+    if favorite
       favorite.destroy
-      render :json => "Success. Favorite deleted."
+      render :json => ["Success. Favorite deleted."]
     else
-      render :json => "Can't delete others' favorites", :status => :forbidden
+      render :json => ["Favorite doesn't exist"], :status => :unprocessable_entity
     end
   end
 end
