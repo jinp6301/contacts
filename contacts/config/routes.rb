@@ -1,5 +1,13 @@
 Contacts::Application.routes.draw do
-  resources :users
+  resources :users, :except => [:new, :edit] do
+    resources :contacts, :only => :index
+    resources :favorites, :only => :index
+  end
+
+  resources :contacts, :except => [:new, :edit, :index]
+  resources :favorites, :except => [:new, :edit, :index, :show]
+
+
   # get 'users' => 'users#index'
   # post 'users' => 'users#create'
   # get 'users/new' => 'users#new'
